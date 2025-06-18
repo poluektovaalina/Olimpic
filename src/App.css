@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Paris2024";
+  src: url("../fonts/Paris2024/Paris2024-Variable.ttf") format("truetype");
+}
+
+
+#root {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.container {
+  background-image: url(../images/bg.png);
+  height: 100%;
+  min-height: 800px;
+  margin: 50px 0px;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 48px 87px 48px;
+
+    .logo {
+      width: 100%;
+      max-width: 280px;
+      padding: 0 0 40px 0;
+
+      img {
+        width: 100%;
+        transition: all .4s ease;
+      }
+
+    }
+
+    .banner {
+      max-width: 306px;
+      max-height: 306px;
+      width: 100%;
+      padding-bottom: 46px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .btn_group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+
+      button {
+        display: flex;
+        background-color: transparent;
+        align-items: center;
+        outline: none;
+        border: 2px solid #fff;
+        padding: 12px 14px;
+        border-radius: 15px;
+        width: 100%;
+        gap: 14px;
+        transition: all .4s ease;
+
+        .title_btn {
+          font-size: 1.3125rem;
+          color: #fff;
+          font-family: "Paris2024";
+        }
+
+        &:hover {
+          cursor: pointer;
+          transition: all .4s ease;
+          box-shadow: 0px 0px 6px #fff;
+          transform: translateY(-10px);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Paris2024";
+  src: url("../fonts/Paris2024/Paris2024-Variable.ttf") format("truetype");
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Paris2024";
+}
+
+
+body{
+  background-color: black;
+}

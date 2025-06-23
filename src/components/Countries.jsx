@@ -1,83 +1,70 @@
-import { useState } from "react";
-import '../components/Countries.css'
+import { useState, useEffect } from "react";
+import "../components/Countries.css";
 import logoOlimpic from "../../images/logo-white.png";
 import icoPrev from "../../images/ico-prev.svg";
-import icoUSA from "../../images/flags/USA.png";
-import icoChina from "../../images/flags/China.png";
-import icoJapan from "../../images/flags/Japan.png";
-import icoGermany from "../../images/flags/Germany.png";
-import icoAustralia from "../../images/flags/Australia.png";
-import icoRussia from "../../images/flags/Russia.png";
-import icoUnitedKingdom from "../../images/flags/UnitedKingdom.png";
-import icoFrance from "../../images/flags/France.png";
-export function Countries() {
+import { CountriesPage } from "./CountriesPage";
+
+export function Countries({ goBack }) {
+  const [countriesPageState, setCountriesPageState] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    fetch("../../json/db.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setCountries(data.countries);
+      })
+      .catch((error) => console.error("Ошибка при загрузке стран:", error));
+  }, []);
+
+  if (countriesPageState && selectedCountry) {
+    return (
+      <CountriesPage
+        goBack={() => setCountriesPageState(false)}
+        country={selectedCountry}
+      />
+    );
+  }
+
   return (
     <>
-      <div className="container">
-        <div className="countries">
-          <div className="header">
-            <div className="prev_btn">
-              <img src={icoPrev} alt="" />
+      {countriesPageState ? (
+        <CountriesPage goBack={() => setCountriesPageState(false)} />
+      ) : (
+        <div className="container">
+          <div className="countries">
+            <div className="header">
+              <div onClick={goBack} className="prev_btn">
+                <img src={icoPrev} alt="" />
+              </div>
+              <div className="logo">
+                <img src={logoOlimpic} alt="" />
+              </div>
             </div>
-            <div className="logo">
-              <img src={logoOlimpic} alt="" />
+            <div className="title">
+              <span>Countries</span>
             </div>
-          </div>
-          <div className="title">
-            <span>Countries</span>
-          </div>
-          <div className="group_countries">
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoUSA} alt="ico-countries" />
-              </div>
-              <span className="title_btn">USA</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoChina} alt="ico-countries" />
-              </div>
-              <span className="title_btn">China</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoJapan} alt="ico-countries" />
-              </div>
-              <span className="title_btn">Japan</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoGermany} alt="ico-countries" />
-              </div>
-              <span className="title_btn">Germany</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoAustralia} alt="ico-countries" />
-              </div>
-              <span className="title_btn">Australia</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoRussia} alt="ico-countries" />
-              </div>
-              <span className="title_btn">Russia</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoUnitedKingdom} alt="ico-countries" />
-              </div>
-              <span className="title_btn">United Kingdom</span>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoFrance} alt="ico-countries" />
-              </div>
-              <span className="title_btn">France</span>
-            </button>
+            <div className="group_countries">
+              {countries.map((country, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setSelectedCountry(country);
+                    setCountriesPageState(true);
+                  }}
+                  className="btn"
+                >
+                  <div className="lolo_btn">
+                    <img src={country.flag} alt="ico-countries" />
+                  </div>
+                  <span className="title_btn">{country.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

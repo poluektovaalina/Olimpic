@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      {mainState ? (< Countries/>) : (
+      {mainState ? (< Countries goBack={() => setMainState(false)}/>) : (
         <div className="container">
           <div className="main">
             <div className="logo">
@@ -21,7 +21,7 @@ function App() {
               <img src={banner} alt="" />
             </div>
             <div className="btn_group">
-              <button onClick={ () => setMainState(true) } className='btn countries'>
+              <button onClick={ () => setMainState(true) } className='btn'>
                 <div className="lolo_btn">
                   <img src={icoCountries} alt="ico-countries" />
                 </div>
@@ -29,7 +29,7 @@ function App() {
                   Countries
                 </span>
               </button>
-              <button className='btn disciplines'>
+              <button className='btn'>
                 <div className="lolo_btn">
                   <img src={icoDisciplines} alt="ico-countries" />
                 </div>

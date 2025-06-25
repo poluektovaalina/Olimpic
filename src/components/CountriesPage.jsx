@@ -1,24 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../components/CountriesPage.css";
 import logoOlimpic from "../../images/logo-white.png";
 import icoPrev from "../../images/ico-prev.svg";
 import icoGold from "../../images/medals/gold.png";
 import icoSilver from "../../images/medals/silver.png";
 import icoBronze from "../../images/medals/bronze.png";
+import { useParams, Link } from "react-router-dom";
+import countriesData from "../../json/db.json";
 
-export function CountriesPage({ goBack, country }) {
-  if (!country) return null;
+export function CountriesPage() {
+  const { countryID } = useParams();
+  const [country, setCountry] = useState(null);
+  
+  function generateId(name) {
+    return name.toLowerCase().replace(/\s+/g, "-");
+  }
+
+  useEffect(() => {
+    const foundCountry = countriesData.countries.find(
+      (c) => generateId(c.name) === countryID
+    );
+    setCountry(foundCountry);
+  }, [countryID]);
+
+
+  if (!country) {
+    return (
+      <div className="container">
+        <span>Loading country data...</span>
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="container countries">
-        <div className="header">
-          <div onClick={goBack} className="prev_btn">
-            <img src={icoPrev} alt="" />
-          </div>
-          <div className="logo">
-            <img src={logoOlimpic} alt="" />
-          </div>
-        </div>
+      <div className="countries">
         <div className="title">
           <span>{country.name}</span>
         </div>
@@ -48,30 +64,30 @@ export function CountriesPage({ goBack, country }) {
           </div>
         </div>
         <div className="groupBtnMedals">
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoGold} alt="" />
-              </div>
-              <div className="title_btn">
-                <span>Medals</span>
-              </div>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoSilver} alt="" />
-              </div>
-              <div className="title_btn">
-                <span>Medals</span>
-              </div>
-            </button>
-            <button className="btn">
-              <div className="lolo_btn">
-                <img src={icoBronze} alt="" />
-              </div>
-              <div className="title_btn">
-                <span>Medals</span>
-              </div>
-            </button>
+          <button className="btn">
+            <div className="lolo_btn">
+              <img src={icoGold} alt="" />
+            </div>
+            <div className="title_btn">
+              <span>Medals</span>
+            </div>
+          </button>
+          <button className="btn">
+            <div className="lolo_btn">
+              <img src={icoSilver} alt="" />
+            </div>
+            <div className="title_btn">
+              <span>Medals</span>
+            </div>
+          </button>
+          <button className="btn">
+            <div className="lolo_btn">
+              <img src={icoBronze} alt="" />
+            </div>
+            <div className="title_btn">
+              <span>Medals</span>
+            </div>
+          </button>
         </div>
       </div>
     </>

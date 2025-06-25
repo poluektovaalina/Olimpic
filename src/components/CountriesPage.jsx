@@ -11,7 +11,7 @@ import countriesData from "../../json/db.json";
 export function CountriesPage() {
   const { countryID } = useParams();
   const [country, setCountry] = useState(null);
-  
+
   function generateId(name) {
     return name.toLowerCase().replace(/\s+/g, "-");
   }
@@ -23,7 +23,6 @@ export function CountriesPage() {
     setCountry(foundCountry);
   }, [countryID]);
 
-
   if (!country) {
     return (
       <div className="container">
@@ -31,6 +30,8 @@ export function CountriesPage() {
       </div>
     );
   }
+
+  const id = generateId(country.name);
 
   return (
     <>
@@ -64,30 +65,36 @@ export function CountriesPage() {
           </div>
         </div>
         <div className="groupBtnMedals">
-          <button className="btn">
-            <div className="lolo_btn">
-              <img src={icoGold} alt="" />
-            </div>
-            <div className="title_btn">
-              <span>Medals</span>
-            </div>
-          </button>
-          <button className="btn">
-            <div className="lolo_btn">
-              <img src={icoSilver} alt="" />
-            </div>
-            <div className="title_btn">
-              <span>Medals</span>
-            </div>
-          </button>
-          <button className="btn">
-            <div className="lolo_btn">
-              <img src={icoBronze} alt="" />
-            </div>
-            <div className="title_btn">
-              <span>Medals</span>
-            </div>
-          </button>
+          <Link to={`/countries/${id}/gold`}>
+            <button className="btn">
+              <div className="lolo_btn">
+                <img src={icoGold} alt="" />
+              </div>
+              <div className="title_btn">
+                <span>Medals</span>
+              </div>
+            </button>
+          </Link>
+          <Link to={`/countries/${id}/silver`}>
+            <button className="btn">
+              <div className="lolo_btn">
+                <img src={icoSilver} alt="" />
+              </div>
+              <div className="title_btn">
+                <span>Medals</span>
+              </div>
+            </button>
+          </Link>
+          <Link to={`/countries/${id}/bronze`}>
+            <button className="btn">
+              <div className="lolo_btn">
+                <img src={icoBronze} alt="" />
+              </div>
+              <div className="title_btn">
+                <span>Medals</span>
+              </div>
+            </button>
+          </Link>
         </div>
       </div>
     </>

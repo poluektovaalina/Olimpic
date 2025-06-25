@@ -1,0 +1,51 @@
+.countriesDisc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .title {
+    font-size: 2.625rem;
+    color: #fff;
+    padding-bottom: 17px;
+  }
+  .flagCountries {
+    padding-bottom: 30px;
+  }
+  .fullMedals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      color: #fff;
+      &:nth-child(1) {
+        font-size: 1.375rem;
+        text-transform: uppercase;
+      }
+      &:nth-child(2) {
+        font-size: 4.5rem;
+        margin-top: -15px;
+      }
+    }
+  }
+  .groupDisc {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #fff;
+    .titleName {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+    .qualityDisc {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .itemDisc {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+  }
+}

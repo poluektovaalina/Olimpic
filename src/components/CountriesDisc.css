@@ -35,16 +35,48 @@
     .titleName {
       display: flex;
       width: 100%;
-      justify-content: space-around;
+      border-bottom: 1px solid #fff;
+      span:nth-child(1){
+          border-left: 1px solid #fff;
+        }
+      span{
+        padding: 7px;
+        width: 50%;
+        font-size: 1.375rem;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        border-right: 1px solid #fff;
+      }
     }
     .qualityDisc {
       display: flex;
       flex-direction: column;
       width: 100%;
+      span{
+        font-size: 1.375rem;
+      }
       .itemDisc {
         display: flex;
         width: 100%;
-        justify-content: space-around;
+        justify-content: space-between;
+        border-bottom: 1px solid #fff;
+        &:nth-last-child(-n + 1){
+          border-bottom: 0px;
+        }
+        span{
+          padding: 7px;
+          border-right: 1px solid #fff;
+        }
+        span:nth-child(1){
+          width: 50%;
+          border-left: 1px solid #fff;
+        }
+        span:nth-child(2){
+          display: flex;
+          justify-content: center;
+          width: 50%;
+        }
       }
     }
   }

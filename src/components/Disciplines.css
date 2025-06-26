@@ -1,42 +1,43 @@
-.countries {
+.disciplines {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-
+  align-items: center;
   .title {
-    font-size: 2.625rem;
-    color: #fff;
-    padding-bottom: 35px;
+    padding-bottom: 56px;
+    span {
+      font-size: 2.625rem;
+      color: #fff;
+    }
   }
-
-  .group_countries {
-    width: 100%;
+  .groupBtnDisciplines {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    width: 100%;
+    max-height: 545px;
+    overflow-y: auto;
+    padding: 10px 10px 0 10px;
 
-    .btn {
+    .itemBtn {
       display: flex;
       background-color: transparent;
       align-items: center;
       outline: none;
       border: 2px solid #fff;
-      padding: 8px 14px;
+      padding: 12px 14px;
       border-radius: 15px;
-      width: 100%;
       gap: 14px;
       transition: all 0.4s ease;
       background-color: #ffffff29;
-
-      .lolo_btn{
+      .imgDisc {
         max-width: 40px;
-        img{
+        img {
           width: 100%;
         }
       }
 
-      .title_btn {
+      .nameDisc {
         font-size: 1.3125rem;
         color: #fff;
         font-family: "Paris2024";
@@ -46,18 +47,8 @@
         cursor: pointer;
         transition: all 0.4s ease;
         box-shadow: 0px 0px 6px #fff;
-        transform: translateY(-3px);
+        transform: translateY(-6px);
       }
     }
-  }
-}
-
-.logo {
-  width: 100%;
-  max-width: 123px;
-
-  img {
-    width: 100%;
-    transition: all 0.4s ease;
   }
 }

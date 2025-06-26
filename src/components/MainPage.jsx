@@ -22,12 +22,14 @@ export function MainPage() {
             <span className="title_btn">Countries</span>
           </button>
         </Link>
-        <button className="btn">
-          <div className="lolo_btn">
-            <img src={icoDisciplines} alt="ico-countries" />
-          </div>
-          <span className="title_btn">Disciplines</span>
-        </button>
+        <Link to="/disciplines">
+          <button className="btn">
+            <div className="lolo_btn">
+              <img src={icoDisciplines} alt="ico-countries" />
+            </div>
+            <span className="title_btn">Disciplines</span>
+          </button>
+        </Link>
       </div>
     </div>
   );

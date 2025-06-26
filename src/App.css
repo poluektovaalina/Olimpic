@@ -62,6 +62,7 @@
         width: 100%;
         gap: 14px;
         transition: all .4s ease;
+        background-color: #ffffff29;
 
         .title_btn {
           font-size: 1.3125rem;

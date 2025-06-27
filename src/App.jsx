@@ -6,6 +6,7 @@ import { CountriesPage } from "../src/components/CountriesPage";
 import { CountriesDisc } from "../src/components/CountriesDisc";
 import { Disciplines } from "../src/components/Disciplines";
 import { DisciplinesPage } from "../src/components/DisciplinesPage"
+import { DisciplinesCountry } from "../src/components/DisciplinesCountry"
 import Layout from "./components/Layout/Layout";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/countries/:countryID/:medalType" element={<CountriesDisc />} />
           <Route path="/disciplines" element={<Disciplines />} />
           <Route path="/disciplines/:disciplinesID" element={<DisciplinesPage/>}/>
+          <Route path="/disciplines/:disciplinesID/:countryId" element={<DisciplinesCountry/>}/>
         </Routes>
       </Layout>
     </Router>

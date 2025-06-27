@@ -2,6 +2,7 @@ import "../components/DisciplinesPage.css";
 import countriesData from "../../json/db.json";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const DisciplinesPage = () => {
   const { disciplinesID } = useParams();
@@ -53,13 +54,16 @@ export const DisciplinesPage = () => {
             const discipline = country.disciplines.find(
               (d) => generateId(d.name) === disciplinesID
             );
+            const countryID = generateId(country.name);
             const total =
               (discipline?.gold || 0) +
               (discipline?.silver || 0) +
               (discipline?.bronze || 0);
             return (
               <div className="itemData" key={country.name}>
-                <span>{country.name}</span>
+                <Link to={`/disciplines/${id}/${countryID}`}>
+                  <span>{country.name}</span>
+                </Link>
                 <span>{total}</span>
               </div>
             );
